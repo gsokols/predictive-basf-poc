@@ -4,7 +4,11 @@
 1. Create directory
 ```
 mkdir ~/predictive.llc
-# Copy/extract files from this folder into  'predictive.llc' folder
+cd ./predictive.llc
+
+# Copy/extract files from this folder into  'predictive.llc' folder, you can use a prepared release archives:
+wget https://github.com/gsokols/predictive-basf-poc/archive/refs/tags/POC-v1.tar.gz
+tar xvfz POC-v1.tar.gz
 ```
 
 2. Give executable permissions to 2 files - start.sh, stop.sh
