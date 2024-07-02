@@ -1,4 +1,4 @@
-````**## Predicitive LLC locally deployed application 
+## Predicitive LLC locally deployed application 
 ### Installation instructions
 
 1. Create directory
