@@ -1,0 +1,54 @@
+version: "2.4"
+services:
+  skin_sensitization_predictor:
+    image: "${ECR_REGISTRY}${PROJECT}/stoptox/skin_sensitization:${VERSION}"
+    ports:
+      - "9990:50055"
+  pred_md_skin_sensitization_predictor:
+    image: "${ECR_REGISTRY}${PROJECT}/predmd/skin_sensitization:${VERSION}"
+    ports:
+      - "9996:50055"
+  skin_irritation_predictor:
+    image: "${ECR_REGISTRY}${PROJECT}/stoptox/skin_irritation:${VERSION}"
+    ports:
+      - "9991:50055"
+  eye_irritation_and_corrosion_predictor:
+    image: "${ECR_REGISTRY}${PROJECT}/stoptox/eye_irritation_and_corrosion:${VERSION}"
+    ports:
+      - "9992:50055"
+  acute_oral_toxicity_predictor:
+    image: "${ECR_REGISTRY}${PROJECT}/stoptox/acute_oral_toxicity:${VERSION}"
+    ports:
+      - "9993:50055"
+  acute_inhalation_toxicity_predictor:
+    image: "${ECR_REGISTRY}${PROJECT}/stoptox/acute_inhalation_toxicity:${VERSION}"
+    ports:
+      - "9994:50055"
+    hostname: "acute.inhalation.toxicity"
+  acute_dermal_toxicity_predictor:
+    image: "${ECR_REGISTRY}${PROJECT}/stoptox/acute_dermal_toxicity:${VERSION}"
+    ports:
+      - "9995:50055"
+  api:
+    image: "${ECR_REGISTRY}${PROJECT}/api:${VERSION}"
+    restart: unless-stopped
+    env_file: .env
+    mem_reservation: 4096M
+    cpu_count: 4
+    links:
+      - "skin_sensitization_predictor"
+      - "skin_irritation_predictor"
+      - "eye_irritation_and_corrosion_predictor"
+      - "acute_oral_toxicity_predictor"
+      - "acute_inhalation_toxicity_predictor"
+      - "acute_dermal_toxicity_predictor"
+      - "pred_md_skin_sensitization_predictor"
+  gui:
+    hostname: "${DNS_NAME}"
+    image: "${ECR_REGISTRY}${PROJECT}/local-frontend:${VERSION}"
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8088:80"
+    links:
+      - "api"
