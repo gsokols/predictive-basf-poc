@@ -1,4 +1,4 @@
-## Predicitive LLC locally deployed application 
+## Predicitive LLC locally deployed application suite (StopTOX, PresMD) 
 ### Installation instructions
 
 1. Create directory
