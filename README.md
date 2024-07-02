@@ -4,24 +4,16 @@
 1. Create directory
 ```
 mkdir ~/predictive.llc
+# Copy/extract files from this folder into  'predictive.llc' folder
 ```
 
-2. Copy/extract files to above 'predictive.llc' folder 
-   The folder should include the following files list:
-```
-ls -ltr ./predictive.llc/
--rw-rw-r--  1 gsokols gsokols 1760 Jul  1 20:33 docker-compose.yaml
--rw-rw-r--  1 gsokols gsokols  241 Jul  1 20:33 .env
--rw-rw-r--  1 gsokols gsokols    0 Jul  1 20:38 README.md
--rw-rw-r--  1 gsokols gsokols  908 Jul  1 20:37 start.sh
--rw-rw-r--  1 gsokols gsokols  196 Jul  1 20:38 stop.sh
-```
-3. Give executable permissions to 2 files - start.sh, stop.sh
+2. Give executable permissions to 2 files - start.sh, stop.sh
 ```
 cd ./predicitive.llc 
 chmod +x start.sh stop.sh uninstall.sh
 ```
-
+3. Update into '.env' file with provided VERSION and LICENSE_KEY
+   
 4. Run 'start.sh' to start the application
 ```
 ./start.sh
